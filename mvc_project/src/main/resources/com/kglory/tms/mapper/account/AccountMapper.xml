@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kglory.tms.mapper.account.AccountMapper">
+     
+    <select id="selectAccount" parameterType="ParamUser" resultType="ResultUser">
+        SELECT <!-- selectAccount -->
+               id
+             , pwd
+             , name
+             , email
+             , regdate
+          FROM account
+         WHERE id = #{id}
+           AND pwd = #{pwd}
+    </select>
+
+    <select id="selectAccountList" parameterType="ParamUser" resultType="ResultUser">
+        SELECT <!-- selectAccountList -->
+               id
+             , pwd
+             , name
+             , email
+             , regdate
+          FROM account
+          <!-- 
+         WHERE id = #{id}
+           AND pwd = #{pwd}
+           -->
+    </select>
+    
+    <insert id="addAccount" parameterType="ParamUser">
+		INSERT <!-- addAccount -->
+		  INTO account
+		     (
+		       id
+		     , pwd
+		     , name
+		     , email
+		     , regdate
+		     )
+		VALUES 
+		     (
+		       #{id}
+		     , #{pwd}
+		     , #{name}
+		     , #{email}
+		     , now()  
+		     ) 
+    </insert>
+
+    <delete id="deleteAccount" parameterType="ParamUser">
+		DELETE <!-- deleteAccount -->
+		  FROM account
+		 WHERE id = #{id}
+    </delete>
+    
+</mapper>

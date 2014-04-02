@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Signin Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="../../../resources/css/site.min.css">
+<!-- <link href="resources/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<!-- Custom styles for this template -->
+<link href="../../../resources/css/signin.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!--  
+<script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/jquery.js"></script>
+<script type="text/javascript" src="http://www.technicalkeeda.com/js/javascripts/plugin/json2.js"></script>
+ -->
+<script type="text/javascript" src="../../../resources/js/site.min.js"></script>
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<form id="userForm" class="form-signin" role="form">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input type="text" id="userid" class="form-control" placeholder="User ID" required autofocus>
+			<input type="password" id="password" class="form-control" placeholder="Password" required>
+			<button id="loginBtn" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+		</form>
+
+	</div>
+	<!-- /container -->
+
+
+	<!-- Bootstrap core JavaScript ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<div class="container">
+		<h1>result</h1>
+		<h3 class="form-signin-heading" id="result"></h3>
+	</div>
+</body>
+<script type="text/javascript">
+$( "#loginBtn" ).click(function() {
+	//alert("madeAjaxCall");
+	var id = $("#userid").val();
+	var password = $("#password").val();
+	var json = {"id":id, "pwd":password};
+	$.ajax({
+		url: "/login/index",
+		data: JSON.stringify(json),
+		type: "post",
+		dataType: "json",
+		contentType: "application/json",
+		success: function(response){
+			var json = JSON.stringify(response);
+			$('#result').html("");
+			var obj = JSON.parse(json);
+			$('#result').html("id : " + obj.id +"</br>login : " + obj.successYn);
+			if(obj.successYn == true) {
+				location.href = "/views/realtime/realtime_test01.html";
+			}
+		},
+		error: function(data, errorThrown) {
+			alert('Error while request..');
+			alert('request failed :'+errorThrown);
+		}
+	});
+});
+</script>
+</html>

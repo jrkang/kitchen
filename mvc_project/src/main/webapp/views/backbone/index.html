@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>account info</title>
+    <!-- Dependencies -->
+    <script src="../../resources/js/jquery/jquery-1.11.0.min.js"></script>
+    <script src="../../resources/js/backbone/underscore-min.js"></script>
+    <script src="../../resources/js/backbone/backbone-min.js"></script>
+    <!-- The actual code -->
+    <script src="./model/models.js"></script>
+    <script src="./view/views1.js"></script>
+    <script src="./router/router.js"></script>
+  </head>
+  <body>
+    <h1>account info</h1>
+ 
+    <!-- The empty table we'll use as the example -->
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>email</th>
+          <th>regdate</th>
+        </tr>
+      </thead>
+      <!-- We'll attach the PeopleView to this element -->
+      <tbody>
+      </tbody>
+    </table>
+    <input type="button" id="searchBtn" value="search"/>
+  </body>
+</html>

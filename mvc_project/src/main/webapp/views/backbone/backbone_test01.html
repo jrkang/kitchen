@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title></title>
+	<!-- 
+	<script src="/resources/js/backbone.js"></script>
+	-->
+	<script src="../resources/js/jquery/jquery-1.11.0.min.js"></script>
+	<script src="../resources/js/backbone/underscore.js"></script>
+	<script src="../resources/js/backbone/backbone-min.js"></script>
+	
+</head>
+<script>
+
+var Account = Backbone.Model.extend({
+	
+	initialize: function(){
+	      console.log('This model has been initialized.');
+	  }
+});
+
+//이제 우리는 전혀 속성값을 가지고 있지않은
+//Account 모델의 실제 객체를 생성할 수 있다.
+var account = new Account();
+console.log(account);
+
+var AccountsCollection = new Backbone.Collection().extend({
+	model: Account
+});
+
+TodosCollection.on("reset", function() {
+  console.log("Collection reseted.");
+});
+
+TodosCollection.add([
+  { title: 'go to Jamaica.', completed: false },
+  { title: 'go to China.', completed: false },
+  { title: 'go to Disneyland.', completed: true }
+]);
+
+console.log('Collection size: ' + TodosCollection.length);
+
+TodosCollection.reset([
+  { title: 'go to Cuba.', completed: false }
+]);
+console.log('Collection size: ' + TodosCollection.length);
+</script>
+<body>
+backbone is .....fa
+</body>
+</html>
