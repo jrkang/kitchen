@@ -24,7 +24,7 @@
  - service 구현
  - MapperScannerConfigurer를 이용한 매퍼 주입 구현 적용(dao 삭제) - common-context.xml
  - 소스 및 리소스 패키지 구조화
- - db.properties 파일 읽어서 적용하는 부분 에러(추후 수정)
+ - db.properties 파일 읽어서 적용하는 부분 에러(추후 수정) - 수정됨
  - 실시간 socket 통신 연동(controller단 까지)
  20140325
  - spring mvc 사용
